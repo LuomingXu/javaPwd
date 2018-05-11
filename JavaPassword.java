@@ -7,6 +7,7 @@ import java.security.spec.InvalidKeySpecException;
 
 /*
  * PBKDF2 算法的密码哈希运算
+ * Hash length = HASH_BYTES*2 + SALT_BYTES*2 + PBKDF2_ITERATIONS.length + 2
  * Author: havoc AT defuse.ca
  * www: http://crackstation.net/hashing-security.htm
  * Chinesization by Luoming Xu 18-5-11
@@ -92,6 +93,16 @@ public class JavaPassword
         byte[] testHash = pbkdf2(password, salt, iterations, hash.length);
         // 比较两个哈希值
         return slowEquals(hash, testHash);
+    }
+
+    /**
+     * 获取此密码哈希的长度
+     *
+     * @return      长度-int
+     */
+    public static int getPbkdf2HashLength()
+    {
+        return SALT_BYTES*2 + HASH_BYTES*2 + Integer.toString(PBKDF2_ITERATIONS).length() + 2;
     }
 
     /**
