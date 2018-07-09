@@ -10,24 +10,24 @@ import java.security.spec.InvalidKeySpecException;
  * Hash length = HASH_BYTES*2 + SALT_BYTES*2 + PBKDF2_ITERATIONS.length + 2
  * Author: havoc AT defuse.ca
  * www: http://crackstation.net/hashing-security.htm
- * Chinesization by Luoming Xu 18-5-11
+ * Chinesized by Luoming Xu 18-5-11
  */
 public class JavaPassword
 {
     // pbkdf2算法
-    public static final String PBKDF2_ALGORITHM = "PBKDF2WithHmacSHA1";
+    private static final String PBKDF2_ALGORITHM = "PBKDF2WithHmacSHA1";
 
     // 以下的参数在不破坏现有哈希的情况下可以修改
-    public static final int SALT_BYTES = 24;
-    public static final int HASH_BYTES = 24;
-    public static final int PBKDF2_ITERATIONS = 1000;
+    private static final int SALT_BYTES = 24;
+    private static final int HASH_BYTES = 24;
+    private static final int PBKDF2_ITERATIONS = 1000;
 
     // 迭代次数 index
-    public static final int ITERATION_INDEX = 0;
+    private static final int ITERATION_INDEX = 0;
     // 盐值 index
-    public static final int SALT_INDEX = 1;
+    private static final int SALT_INDEX = 1;
     // PBKDF2 index
-    public static final int PBKDF2_INDEX = 2;
+    private static final int PBKDF2_INDEX = 2;
 
     /**
      * 计算哈希值
